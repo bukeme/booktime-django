@@ -1,3 +1,4 @@
 curl-ca-bundle.crt
 curl.exe
 .env
+venv/
