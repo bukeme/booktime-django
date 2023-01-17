@@ -16,6 +16,9 @@ class Product(models.Model):
 	in_stock = models.BooleanField(default=True)
 	date_updated = models.DateTimeField(auto_now=True)
 
+	def __str__(self):
+		return self.name 
+
 
 class ProductImage(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
