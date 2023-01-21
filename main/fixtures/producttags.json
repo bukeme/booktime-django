@@ -1,0 +1,29 @@
+[
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "clothing",
+    "slug": "clothing",
+    "description": "clothing",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "jewelery",
+    "slug": "jewelery",
+    "description": "jewelery",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "fields": {
+    "name": "electronics",
+    "slug": "electronics",
+    "description": "electronics",
+    "active": true
+  }
+}
+]
