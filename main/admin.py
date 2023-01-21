@@ -12,15 +12,16 @@ class ProductAdmin(admin.ModelAdmin):
 	list_editable = ('in_stock',)
 	search_fields = ('name',)
 	prepopulated_fields = {'slug': ('name',)}
+	autocomplete_fields = ('tags',)
 
 admin.site.register(models.Product, ProductAdmin)
 
 class ProductTagAdmin(admin.ModelAdmin):
 	list_display = ('name', 'slug')
 	list_filter = ('active',)
-	serarch_fields = ('name',)
+	search_fields = ('name',)
 	prepopulated_fields = {'slug': ('name',)}
-	autocomplete_fields = ('products',)
+	
 
 admin.site.register(models.ProductTag, ProductTagAdmin)
 
