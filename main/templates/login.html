@@ -6,7 +6,7 @@
 	<p>Please fill the form below.</p>
 	<form method="post">
 		{% csrf_token %}
-		<div class="form-group">
+		<!-- <div class="form-group">
 			{{form.email.label_tag}}
 			<input 
 				type="email" 
@@ -39,7 +39,10 @@
 					{{form.password.errors}}
 				</div>
 			{% endif %}
-		</div>
+		</div> -->
+		{{form.non_field_errors}}
+		{% include 'includes/field.html' with field=form.email %}
+		{% include 'includes/field.html' with field=form.password %}
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 
