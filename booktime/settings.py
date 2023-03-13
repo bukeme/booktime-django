@@ -41,10 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'webpack_loader',
+    'django_extensions',
+    'debug_toolbar',
+    'django_tables2',
+    'widget_tweaks',
+    'rest_framework',
     'main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +61,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'main.middlewares.basket_middleware',
 ]
+
+INTERNAL_IPS = ['127.0.0.1']
 
 ROOT_URLCONF = 'booktime.urls'
 
@@ -135,7 +144,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 if not DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-    EMAIL_HOST = 'smtp.domain.com'
+    EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
     EMAIL_USE_TLS = True
     EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
@@ -146,3 +155,19 @@ else:
 
 AUTH_USER_MODEL = 'main.User'
 
+DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap.html'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication'
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissions',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_PAGINATION_CLASSS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}
